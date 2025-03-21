@@ -1,6 +1,7 @@
 # TMux Konfiguration
 
 Diese TMux-Konfiguration optimiert die Bedienung durch nützliche Tastenkombinationen, True-Color-Support und verschiedene Plugins.
+![Screenshot](screenshot.png)
 
 ## Installation
 
@@ -13,7 +14,7 @@ brew install tmux       # macOS
 
 ### 2. Repository klonen und Konfiguration anwenden
 ```sh
-git clone https://github.com/myuser/projekt.git ~/.tmux
+git clone https://github.com/vhstack/tmuxpp.git ~/.tmux
 ln -s ~/.tmux/tmux.conf ~/.tmux.conf
 ```
 
@@ -32,6 +33,8 @@ Prefix + I  # Installiert Plugins
 
 - **Prefix-Taste**: `Ctrl + A` (statt `Ctrl + B`)
 - **Fenster verwalten:**
+  - `Prefix + c` → Fenster anlegen
+  - `Prefix + ,` → Fenster umbenenne
   - `Prefix + |` → Vertikal splitten
   - `Prefix + -` → Horizontal splitten
   - `Prefix + N` → Pane trennen
