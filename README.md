@@ -1,6 +1,7 @@
 # TMux Konfiguration
 
 Diese TMux-Konfiguration optimiert die Bedienung durch nützliche Tastenkombinationen, True-Color-Support und verschiedene Plugins.  
+Das Beispielskript `sample_run.sh` konfiguriert und startet automatisch eine Session mit mehreren Fenstern.
 
 ![Screenshot](screenshot.png)
 
