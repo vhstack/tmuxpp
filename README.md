@@ -3,7 +3,7 @@
 Diese TMux-Konfiguration optimiert die Bedienung durch nützliche Tastenkombinationen, True-Color-Support und verschiedene Plugins.
 ![Screenshot](screenshot.png)
 
-## Installation
+## 📥 Installation
 
 ### 1. TMux installieren
 Falls TMux noch nicht installiert ist:
@@ -29,7 +29,7 @@ Starte TMux und drücke:
 Prefix + I  # Installiert Plugins
 ```
 
-## Tastenkombinationen
+## ⌨ Tastenkombinationen
 
 - **Prefix-Taste**: `Ctrl + A` (statt `Ctrl + B`)
 - **Fenster verwalten:**
@@ -46,14 +46,14 @@ Prefix + I  # Installiert Plugins
 - **Konfiguration neu laden:**
   - `Prefix + r`
 
-## Plugins
+## 📦 Plugins
 Folgende Plugins werden über TPM verwaltet:
 - `tmux-plugins/tmux-sensible` → Standardkonfiguration
 - `christoomey/vim-tmux-navigator` → Vim-ähnliche Navigation
 - `tmux-plugins/tmux-sessionist` → Session-Management
 - `jimeh/tmux-themepack` → Powerline-Theme
-
-## Farbe & Theme
+    
+## 🎨 Farbe & Theme
 - True Color aktiviert
 - `catppuccin`-Theme vorbereitet (deaktiviert, kann aktiviert werden)
 - Powerline-Doppel-Cyan-Theme standardmäßig aktiv
