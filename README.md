@@ -1,6 +1,6 @@
 # TMux Konfiguration
 
-Diese TMux-Konfiguration optimiert die Bedienung durch nützliche Tastenkombinationen, True-Color-Support und verschiedene Plugins.
+Diese TMux-Konfiguration optimiert die Bedienung durch nützliche Tastenkombinationen, True-Color-Support und verschiedene Plugins.  
 ![Screenshot](screenshot.png)
 
 ## 📥 Installation
