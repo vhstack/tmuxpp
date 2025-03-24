@@ -42,6 +42,7 @@ Prefix + I  # Installiert Plugins
   - `Prefix + N` → Pane trennen
 - **Navigation:**
   - `Alt + →` / `Alt + ←` → Zwischen Fenstern wechseln
+  - `Strg + Alt + →` / `Strg + Alt + ←` → Fenster verschieben
 - **Fenstergröße anpassen:**
   - `Prefix + j/k/h/l` → Fenstergröße ändern
   - `Prefix + m` → Maximieren/Wiederherstellen
