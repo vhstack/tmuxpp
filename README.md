@@ -36,7 +36,9 @@ Prefix + I  # Installiert Plugins
 - **Prefix-Taste**: `Ctrl + A` (statt `Ctrl + B`)
 - **Fenster verwalten:**
   - `Prefix + c` → Fenster anlegen
-  - `Prefix + ,` → Fenster umbenenne
+  - `Prefix + ,` → Fenster umbenennen
+  - `Prefix + x` → Fenster schliessen
+  - `Prefix + $` → Session umbenennen
   - `Prefix + |` → Vertikal splitten
   - `Prefix + -` → Horizontal splitten
   - `Prefix + N` → Pane trennen
