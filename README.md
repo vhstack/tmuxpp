@@ -17,7 +17,8 @@ brew install tmux       # macOS
 ### 2. Repository klonen und Konfiguration anwenden
 ```sh
 git clone https://github.com/vhstack/tmuxpp.git ~/.tmux
-ln -s ~/.tmux/tmux.conf ~/.tmux.conf
+rm -rf ~/.tmux/.git ~/.tmux/assets ~/.tmux/README.md
+ln -s ~/.tmux/tmux.conf ~/.tmux.conf 
 ```
 
 ### 3. TPM (Tmux Plugin Manager) installieren
