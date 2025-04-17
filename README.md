@@ -45,6 +45,7 @@ Prefix + I  # Installiert Plugins
   - `Prefix + -` → Horizontal splitten
   - `Prefix + N` → Pane trennen
 - **Navigation:**
+  - `Prefix + ←,→,↑,↓` → Zwischen Panes wechseln
   - `Alt + →` / `Alt + ←` → Zwischen Fenstern wechseln
   - `Strg + Alt + →` / `Strg + Alt + ←` → Fenster verschieben
 - **Fenstergröße anpassen:**
