@@ -14,20 +14,26 @@ sudo apt install tmux   # Debian/Ubuntu
 brew install tmux       # macOS
 ```
 
-### 2. Repository klonen und Konfiguration anwenden
+### 2. TERM-Variable setzen
+In der Datei `~/.bashrc` die Varible `TERM` setzen:
+```sh
+export TERM=xterm-256color
+```
+
+### 3. Repository klonen und Konfiguration anwenden
 ```sh
 git clone --depth 1 https://github.com/vhstack/tmuxpp.git ~/.tmux
 rm -rf ~/.tmux/.git ~/.tmux/assets ~/.tmux/README.md
 ln -s ~/.tmux/tmux.conf ~/.tmux.conf 
 ```
 
-### 3. TPM (Tmux Plugin Manager) installieren
+### 4. TPM (Tmux Plugin Manager) installieren
 ```sh
 git clone --depth 1 https://github.com/tmux-plugins/tpm ~/.tmux/plugins/tpm
 rm -rf ~/.tmux/plugins/tpm/.git
 ```
 
-### 4. Plugins installieren
+### 5. Plugins installieren
 Starte TMux und drücke:
 ```
 Prefix + I  # Installiert Plugins
