@@ -6,7 +6,7 @@
 
 This TMux configuration is designed for enhanced usability, featuring intuitive keybindings, true-color support, 
 and a selection of useful plugins.
-The example script `sample_run.sh` automatically sets up and launches a session with multiple windows.
+The example script `sample_run.sh` automatically sets up and launches a session with multiple windows.  
 
 ![Screenshot](assets/screenshot.png)
 
