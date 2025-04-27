@@ -33,7 +33,7 @@ export TERM=xterm-256color
 
 ```bash
 git clone --depth 1 https://github.com/vhstack/tmuxpp.git ~/.tmux
-rm -rf ~/.tmux/.git ~/.tmux/assets ~/.tmux/README.md
+rm -rf ~/.tmux/.git ~/.tmux/assets ~/.tmux/README*.md
 ln -s ~/.tmux/tmux.conf ~/.tmux.conf
 ```
 
