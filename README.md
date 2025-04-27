@@ -2,17 +2,17 @@
   <a href="README.md"><img src="https://flagcdn.com/16x12/de.png" alt="Deutsch" title="Zur deutschen Version wechseln" /></a>  <a href="README.en.md"><img src="https://flagcdn.com/16x12/gb.png" alt="English" title="Switch to English" /></a>
 </p>
 
-# TMux Konfiguration
+# Tmux Konfiguration
 
-Diese TMux-Konfiguration optimiert die Bedienung durch nützliche Tastenkombinationen, True-Color-Support und verschiedene Plugins.
+Diese Tmux-Konfiguration optimiert die Bedienung durch nützliche Tastenkombinationen, True-Color-Support und verschiedene Plugins.
 Das Beispielskript `sample_run.sh` konfiguriert und startet automatisch eine Session mit mehreren Fenstern.  
 
 ![Screenshot](assets/screenshot.png)
 
 ## 📥 Installation
 
-### 1. TMux installieren
-Falls TMux noch nicht installiert ist:
+### 1. Tmux installieren
+Falls Tmux noch nicht installiert ist:
 ```sh
 sudo apt install tmux   # Debian/Ubuntu
 brew install tmux       # macOS
@@ -38,7 +38,7 @@ rm -rf ~/.tmux/plugins/tpm/.git
 ```
 
 ### 5. Plugins installieren
-Starte TMux und drücke:
+Starte Tmux und drücke:
 ```
 Prefix + I  # Installiert Plugins
 ```
@@ -77,4 +77,4 @@ Folgende Plugins werden über TPM verwaltet:
 - Powerline-Doppel-Cyan-Theme standardmäßig aktiv
 
 ---
-Jetzt kannst du deine TMux-Session effizienter nutzen! 🚀
+Jetzt kannst du deine Tmux-Session effizienter nutzen! 🚀

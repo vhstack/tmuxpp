@@ -2,9 +2,9 @@
   <a href="README.md"><img src="https://flagcdn.com/16x12/de.png" alt="Deutsch" title="Zur deutschen Version wechseln" /></a>  <a href="README.en.md"><img src="https://flagcdn.com/16x12/gb.png" alt="English" title="Switch to English" /></a>
 </p>
 
-# TMux Configuration
+# Tmux Configuration
 
-This TMux configuration is designed for enhanced usability, featuring intuitive keybindings, true-color support, 
+This Tmux configuration is designed for enhanced usability, featuring intuitive keybindings, true-color support, 
 and a selection of useful plugins.
 The example script `sample_run.sh` automatically sets up and launches a session with multiple windows.  
 
@@ -12,9 +12,9 @@ The example script `sample_run.sh` automatically sets up and launches a session 
 
 ## 📥 Installation
 
-### 1. Install TMux
+### 1. Install Tmux
 
-If TMux is not yet installed:
+If Tmux is not yet installed:
 
 ```bash
 sudo apt install tmux    # Debian/Ubuntu
@@ -46,7 +46,7 @@ rm -rf ~/.tmux/plugins/tpm/.git
 
 ### 5. Install Plugins
 
-Start TMux and press:
+Start Tmux and press:
 
 ```tmux
 Prefix + I    # Installs the plugins
@@ -90,4 +90,4 @@ Managed using TPM:
 
 ---
 
-You're now ready to work more efficiently in your TMux sessions! 🚀
+You're now ready to work more efficiently in your Tmux sessions! 🚀
