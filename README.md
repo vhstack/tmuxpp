@@ -69,12 +69,10 @@ Folgende Plugins werden über TPM verwaltet:
 - `tmux-plugins/tmux-sensible` → Standardkonfiguration
 - `christoomey/vim-tmux-navigator` → Vim-ähnliche Navigation
 - `tmux-plugins/tmux-sessionist` → Session-Management
-- `jimeh/tmux-themepack` → Powerline-Theme
     
 ## 🎨 Farbe & Theme
 - True Color aktiviert
-- `catppuccin`-Theme vorbereitet (deaktiviert, kann aktiviert werden)
-- Powerline-Doppel-Cyan-Theme standardmäßig aktiv
+- `catppuccin`-Theme aktiviert
 
 ---
 Jetzt kannst du deine Tmux-Session effizienter nutzen! 🚀

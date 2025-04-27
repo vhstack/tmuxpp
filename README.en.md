@@ -80,13 +80,11 @@ Managed using TPM:
 - `tmux-plugins/tmux-sensible` → Standard config
 - `christoomey/vim-tmux-navigator` → Vim-style pane navigation
 - `tmux-plugins/tmux-sessionist` → Session management
-- `jimeh/tmux-themepack` → Powerline theme pack
 
 ## 🎨 Color & Theme
 
 - True-color support enabled
-- `catppuccin` theme is included (disabled by default, but can be easily enabled)
-- Powerline double-cyan theme is active by default
+- `catppuccin` theme is enabled 
 
 ---
 
