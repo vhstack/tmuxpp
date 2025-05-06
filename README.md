@@ -19,6 +19,7 @@ Falls Tmux noch nicht installiert ist:
 sudo apt install tmux   # Debian/Ubuntu
 brew install tmux       # macOS
 ```
+Weitere Informationen findest du im [**Tmux Wiki**](https://github.com/tmux/tmux/wiki).
 
 ### 2. TERM-Variable setzen
 In der Datei `~/.bashrc` die Varible `TERM` setzen:
@@ -38,6 +39,7 @@ ln -s ~/.tmux/tmux.conf ~/.tmux.conf
 git clone --depth 1 https://github.com/tmux-plugins/tpm ~/.tmux/plugins/tpm
 rm -rf ~/.tmux/plugins/tpm/.git
 ```
+Mehr dazu findest du im [**TPM-Repository**](https://github.com/tmux-plugins/tpm).
 
 ### 5. Plugins installieren
 Starte Tmux und drücke:

@@ -19,6 +19,7 @@
 sudo apt install tmux   # Debian/Ubuntu
 brew install tmux       # macOS
 ```
+Дополнительную информацию можно найти в [**Tmux Wiki**](https://github.com/tmux/tmux/wiki).
 
 ### 2. Установите переменную TERM
 Добавьте в файл `~/.bashrc`:
@@ -38,6 +39,7 @@ ln -s ~/.tmux/tmux.conf ~/.tmux.conf
 git clone --depth 1 https://github.com/tmux-plugins/tpm ~/.tmux/plugins/tpm
 rm -rf ~/.tmux/plugins/tpm/.git
 ```
+Подробнее см. в [**TPM-Repository**](https://github.com/tmux-plugins/tpm).
 
 ### 5. Установите плагины
 Запустите Tmux и нажмите:
