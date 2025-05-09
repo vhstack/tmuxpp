@@ -51,6 +51,7 @@ Prefix + I  # Installiert Plugins
 
 - **Prefix-Taste**: `Ctrl + A` (statt `Ctrl + B`)
 - **Fenster verwalten:**
+  - `Prefix + +` → Neue Session erzeugen
   - `Prefix + c` → Fenster anlegen
   - `Prefix + ,` → Fenster umbenennen
   - `Prefix + x` → Fenster schliessen

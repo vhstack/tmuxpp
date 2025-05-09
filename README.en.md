@@ -60,6 +60,7 @@ Prefix + I    # Installs the plugins
 
 - **Prefix Key:** `Ctrl + A` (instead of `Ctrl + B`)
 - **Window Management:**
+  - `Prefix + +` → Create a new session
   - `Prefix + c` → Create a new window
   - `Prefix + ,` → Rename the window
   - `Prefix + x` → Close the window
