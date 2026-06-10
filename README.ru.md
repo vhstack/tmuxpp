@@ -71,14 +71,13 @@ Prefix + I  # Устанавливает плагины
 
 ## 📦 Плагины
 Управляются через TPM:
-- `tmux-plugins/tmux-sensible` → Базовая конфигурация
 - `christoomey/vim-tmux-navigator` → Навигация, как в Vim
 - `tmux-plugins/tmux-sessionist` → Управление сессиями
 
 ## 🎨 Цвет & Тема
 - Включена поддержка True Color
-- Активирована тема `vhstack`
-- Интегрирована тема `catppuccin`
+- Доступные темы (через `@theme` в `tmux.conf`): `vhstack`, `vhstack_lite`, `catppuccin`
+- Тема `vhstack` активирована по умолчанию
 
 ---
 Теперь вы можете эффективно использовать вашу Tmux-сессию! 🚀

@@ -71,14 +71,13 @@ Prefix + I  # Installiert Plugins
 
 ## 📦 Plugins
 Folgende Plugins werden über TPM verwaltet:
-- `tmux-plugins/tmux-sensible` → Standardkonfiguration
 - `christoomey/vim-tmux-navigator` → Vim-ähnliche Navigation
 - `tmux-plugins/tmux-sessionist` → Session-Management
     
 ## 🎨 Farbe & Theme
 - True Color aktiviert
-- `vhstack`-Theme aktiviert
-- `catppuccin`-Theme integriert
+- Auswählbare Themes (über `@theme` in `tmux.conf`): `vhstack`, `vhstack_lite`, `catppuccin`
+- `vhstack`-Theme standardmäßig aktiviert
 
 ---
 Jetzt kannst du deine Tmux-Session effizienter nutzen! 🚀

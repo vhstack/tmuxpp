@@ -82,15 +82,14 @@ Prefix + I    # Installs the plugins
 
 Managed using TPM:
 
-- `tmux-plugins/tmux-sensible` → Standard config
 - `christoomey/vim-tmux-navigator` → Vim-style pane navigation
 - `tmux-plugins/tmux-sessionist` → Session management
 
 ## 🎨 Color & Theme
 
 - True-color support enabled
-- `vhstack` theme is enabled
-- `catppuccin` theme is included
+- Selectable themes (via `@theme` in `tmux.conf`): `vhstack`, `vhstack_lite`, `catppuccin`
+- `vhstack` theme enabled by default
 
 ---
 
