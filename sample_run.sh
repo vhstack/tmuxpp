@@ -1,5 +1,5 @@
 # Beispiel Tmux Start Skript 
-# Eine Session 'Work' mit drei Fenstern (edit, build und run) 
+# Eine Session 'Work' mit drei Fenstern (develop, build und run)
 # wird gestartet und verbunden.
 tmux new-session -d -s Work -n develop\; \
   new-window -n build \; \
