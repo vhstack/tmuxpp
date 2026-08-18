@@ -4,7 +4,7 @@
   <a href="README.ru.md"><img src="https://flagcdn.com/16x12/ru.png" alt="Русский" title="Переключиться на русскую версию" /></a>
 </p>
 
-# Tmux Konfiguration
+# Tmux-Konfiguration
 
 Diese Tmux-Konfiguration optimiert die Bedienung durch nützliche Tastenkombinationen, True-Color-Support, Maus- und Zwischenablage-Unterstützung sowie verschiedene Plugins.
 Das Beispielskript `sample_run.sh` konfiguriert und startet automatisch eine Session mit mehreren Fenstern.  
@@ -22,7 +22,7 @@ brew install tmux       # macOS
 Weitere Informationen findest du im [**Tmux Wiki**](https://github.com/tmux/tmux/wiki).
 
 ### 2. TERM-Variable setzen
-In der Datei `~/.bashrc` die Varible `TERM` setzen:
+In der Datei `~/.bashrc` die Variable `TERM` setzen:
 ```sh
 export TERM=xterm-256color
 ```
@@ -48,7 +48,7 @@ Starte Tmux und drücke:
 Prefix + I  # Installiert Plugins
 ```
 
-## ⌨ Tastenkombinationen
+## ⌨️ Tastenkombinationen
 
 - **Prefix-Taste**: `Ctrl + A` (statt `Ctrl + B`)
 - **Fenster & Panes:**
@@ -59,15 +59,15 @@ Prefix + I  # Installiert Plugins
   - `Prefix + |` → Senkrecht teilen (Panes nebeneinander)
   - `Prefix + -` → Waagerecht teilen (Panes untereinander)
   - `Prefix + b` → Pane in ein eigenes Fenster lösen
-  - `Prefix + x` → Pane schliessen
-  - `Prefix + &` → Fenster schliessen
+  - `Prefix + x` → Pane schließen
+  - `Prefix + &` → Fenster schließen
   - `Prefix + s` → Session-Baum, nach Namen sortiert
 - **Navigation:**
   - `Prefix + ←,→,↑,↓` → Zwischen Panes wechseln
   - `Alt + →` / `Alt + ←` → Zwischen Fenstern wechseln
   - `Strg + Alt + →` / `Strg + Alt + ←` → Fenster verschieben
-- **Fenstergröße anpassen:**
-  - `Prefix + j/k/h/l` → Fenstergröße ändern (wiederholbar)
+- **Panegröße anpassen:**
+  - `Prefix + j/k/h/l` → Panegröße ändern (wiederholbar)
   - `Prefix + z` → Pane maximieren/wiederherstellen
 - **Maus:**
   - Mausrad → Im History-Buffer scrollen (3 Zeilen pro Rasterung, der Copy-Mode wird automatisch betreten und am Ende wieder verlassen)

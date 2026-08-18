@@ -47,7 +47,7 @@ Keep `clipboard.sh` in place — it is required for clipboard support (see below
 git clone --depth 1 https://github.com/tmux-plugins/tpm ~/.tmux/plugins/tpm
 rm -rf ~/.tmux/plugins/tpm/.git
 ```
-More details can be found in the[**TPM-Repository**](https://github.com/tmux-plugins/tpm).
+More details can be found in the [**TPM repository**](https://github.com/tmux-plugins/tpm).
 
 ### 5. Install Plugins
 
