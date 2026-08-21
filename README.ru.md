@@ -6,7 +6,7 @@
 
 # Конфигурация Tmux
 
-Эта конфигурация Tmux оптимизирует работу за счёт полезных сочетаний клавиш, поддержки True Color, работы с мышью и буфером обмена, а также различных плагинов.  
+Эта конфигурация Tmux оптимизирует работу за счёт полезных сочетаний клавиш, поддержки True Color, работы с мышью и буфером обмена — без менеджера плагинов.  
 Скрипт-пример `sample_run.sh` автоматически настраивает и запускает сессию с несколькими окнами.
 
 ![Скриншот](assets/screenshot.png)
@@ -35,20 +35,7 @@ ln -s ~/.tmux/tmux.conf ~/.tmux.conf
 ```
 Файлы `clipboard.sh` и `install_win32yank.sh` должны остаться на месте — они нужны для работы с буфером обмена (см. ниже).
 
-### 4. Установите TPM (Tmux Plugin Manager)
-```sh
-git clone --depth 1 https://github.com/tmux-plugins/tpm ~/.tmux/plugins/tpm
-rm -rf ~/.tmux/plugins/tpm/.git
-```
-Подробнее см. в [**TPM-Repository**](https://github.com/tmux-plugins/tpm).
-
-### 5. Установите плагины
-Запустите Tmux и нажмите:
-```
-Prefix + I  # Устанавливает плагины
-```
-
-### 6. Только в WSL: быстрый буфер обмена
+### 4. Только в WSL: быстрый буфер обмена
 ```sh
 sh ~/.tmux/install_win32yank.sh
 ```
@@ -127,15 +114,16 @@ sh ~/.tmux/install_win32yank.sh --remove  # удалить
 ```
 Скрипт скачивает закреплённый релиз [win32yank v0.1.1](https://github.com/equalsraf/win32yank), проверяет SHA256 архива и самого `.exe` и кладёт утилиту в `%LOCALAPPDATA%\win32yank`, то есть в файловую систему Windows. Это сделано намеренно: если `.exe` лежит в файловой системе WSL, Windows загружает её через `\\wsl.localhost` и тратит более чем в два раза больше времени. В PATH попадает только символьная ссылка (`~/.local/bin`), а сам путь запоминается в `~/.cache/tmuxpp/win32yank.path`. После этого нажмите `Prefix + r`.
 
-## 📦 Плагины
-Управляются через TPM:
-- `christoomey/vim-tmux-navigator` → Навигация, как в Vim
-- `tmux-plugins/tmux-sessionist` → Управление сессиями
-
 ## 🎨 Цвет & Тема
 - Включена поддержка True Color
 - Доступные темы (через `@theme` в `tmux.conf`): `vhstack`, `vhstack_lite`, `catppuccin`
 - Тема `vhstack` активирована по умолчанию
+
+Конфигурация обходится без менеджера плагинов. Только опциональной теме `catppuccin` нужен плагин — клонируйте его один раз, затем `Prefix + r`:
+```sh
+git clone --depth 1 -b v2.1.3 https://github.com/catppuccin/tmux ~/.tmux/plugins/tmux
+rm -rf ~/.tmux/plugins/tmux/.git
+```
 
 ---
 Теперь вы можете эффективно использовать вашу Tmux-сессию! 🚀

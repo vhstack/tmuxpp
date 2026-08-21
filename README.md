@@ -6,7 +6,7 @@
 
 # Tmux-Konfiguration
 
-Diese Tmux-Konfiguration optimiert die Bedienung durch nützliche Tastenkombinationen, True-Color-Support, Maus- und Zwischenablage-Unterstützung sowie verschiedene Plugins.
+Diese Tmux-Konfiguration optimiert die Bedienung durch nützliche Tastenkombinationen, True-Color-Support sowie Maus- und Zwischenablage-Unterstützung — ohne Plugin-Manager.
 Das Beispielskript `sample_run.sh` konfiguriert und startet automatisch eine Session mit mehreren Fenstern.  
 
 ![Screenshot](assets/screenshot.png)
@@ -35,20 +35,7 @@ ln -s ~/.tmux/tmux.conf ~/.tmux.conf
 ```
 `clipboard.sh` und `install_win32yank.sh` bleiben dabei liegen — beide werden für die Zwischenablage gebraucht (siehe unten).
 
-### 4. TPM (Tmux Plugin Manager) installieren
-```sh
-git clone --depth 1 https://github.com/tmux-plugins/tpm ~/.tmux/plugins/tpm
-rm -rf ~/.tmux/plugins/tpm/.git
-```
-Mehr dazu findest du im [**TPM-Repository**](https://github.com/tmux-plugins/tpm).
-
-### 5. Plugins installieren
-Starte Tmux und drücke:
-```
-Prefix + I  # Installiert Plugins
-```
-
-### 6. Nur unter WSL: schnelle Zwischenablage
+### 4. Nur unter WSL: schnelle Zwischenablage
 ```sh
 sh ~/.tmux/install_win32yank.sh
 ```
@@ -126,15 +113,16 @@ sh ~/.tmux/install_win32yank.sh --remove  # wieder entfernen
 ```
 Das Skript lädt das festgelegte Release [win32yank v0.1.1](https://github.com/equalsraf/win32yank), prüft die SHA256-Summe von Archiv und `.exe` und legt das Werkzeug unter `%LOCALAPPDATA%\win32yank` ab, also im Windows-Dateisystem. Das ist Absicht: liegt die `.exe` im WSL-Dateisystem, lädt Windows sie über `\\wsl.localhost` und braucht mehr als das Doppelte. In den PATH kommt nur ein Symlink darauf (`~/.local/bin`), gefunden wird sie über `~/.cache/tmuxpp/win32yank.path`. Danach `Prefix + r`.
 
-## 📦 Plugins
-Folgende Plugins werden über TPM verwaltet:
-- `christoomey/vim-tmux-navigator` → Vim-ähnliche Navigation
-- `tmux-plugins/tmux-sessionist` → Session-Management
-    
 ## 🎨 Farbe & Theme
 - True Color aktiviert
 - Auswählbare Themes (über `@theme` in `tmux.conf`): `vhstack`, `vhstack_lite`, `catppuccin`
 - `vhstack`-Theme standardmäßig aktiviert
+
+Die Konfiguration kommt ohne Plugin-Manager aus. Einzig das optionale `catppuccin`-Theme braucht ein Plugin — einmalig klonen, dann `Prefix + r`:
+```sh
+git clone --depth 1 -b v2.1.3 https://github.com/catppuccin/tmux ~/.tmux/plugins/tmux
+rm -rf ~/.tmux/plugins/tmux/.git
+```
 
 ---
 Jetzt kannst du deine Tmux-Session effizienter nutzen! 🚀

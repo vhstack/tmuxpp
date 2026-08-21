@@ -7,7 +7,7 @@
 # Tmux Configuration
 
 This Tmux configuration is designed for enhanced usability, featuring intuitive keybindings, true-color support, 
-mouse and clipboard integration, and a selection of useful plugins.
+and mouse and clipboard integration — with no plugin manager involved.
 The example script `sample_run.sh` automatically sets up and launches a session with multiple windows.  
 
 ![Screenshot](assets/screenshot.png)
@@ -41,23 +41,7 @@ ln -s ~/.tmux/tmux.conf ~/.tmux.conf
 ```
 Keep `clipboard.sh` and `install_win32yank.sh` in place — both are used for clipboard support (see below).
 
-### 4. Install TPM (Tmux Plugin Manager)
-
-```bash
-git clone --depth 1 https://github.com/tmux-plugins/tpm ~/.tmux/plugins/tpm
-rm -rf ~/.tmux/plugins/tpm/.git
-```
-More details can be found in the [**TPM repository**](https://github.com/tmux-plugins/tpm).
-
-### 5. Install Plugins
-
-Start Tmux and press:
-
-```tmux
-Prefix + I    # Installs the plugins
-```
-
-### 6. WSL only: fast clipboard
+### 4. WSL only: fast clipboard
 
 ```sh
 sh ~/.tmux/install_win32yank.sh
@@ -138,18 +122,17 @@ sh ~/.tmux/install_win32yank.sh --remove  # remove again
 ```
 The script downloads the pinned release [win32yank v0.1.1](https://github.com/equalsraf/win32yank), verifies the SHA256 of both the archive and the `.exe`, and puts the tool in `%LOCALAPPDATA%\win32yank`, that is, on the Windows filesystem. This is deliberate: with the `.exe` on the WSL filesystem, Windows loads it through `\\wsl.localhost` and needs more than twice as long. Only a symlink goes into the PATH (`~/.local/bin`); the path itself is recorded in `~/.cache/tmuxpp/win32yank.path`. Then press `Prefix + r`.
 
-## 📦 Plugins
-
-Managed using TPM:
-
-- `christoomey/vim-tmux-navigator` → Vim-style pane navigation
-- `tmux-plugins/tmux-sessionist` → Session management
-
 ## 🎨 Color & Theme
 
 - True-color support enabled
 - Selectable themes (via `@theme` in `tmux.conf`): `vhstack`, `vhstack_lite`, `catppuccin`
 - `vhstack` theme enabled by default
+
+The configuration works without a plugin manager. Only the optional `catppuccin` theme needs a plugin — clone it once, then press `Prefix + r`:
+```sh
+git clone --depth 1 -b v2.1.3 https://github.com/catppuccin/tmux ~/.tmux/plugins/tmux
+rm -rf ~/.tmux/plugins/tmux/.git
+```
 
 ---
 
