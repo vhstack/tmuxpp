@@ -12,6 +12,9 @@
 # Rechner und funktioniert deshalb auch auf einem Server ohne X/Wayland und
 # ueber SSH hinweg. Klappt beides nicht, bleibt der Text im tmux-Buffer
 # (prefix + ] fuegt ihn ein).
+#
+# Unter WSL lohnt sich win32yank.exe: 'sh install_win32yank.sh' richtet es ein
+# und macht das Einfuegen etwa viermal so flott wie den Weg ueber powershell.exe.
 
 set -u
 
@@ -34,12 +37,27 @@ run_tool() {
 	fi
 }
 
+# win32yank.exe ist unter WSL das schnellste Werkzeug. install_win32yank.sh
+# legt es im Windows-Dateisystem ab und hinterlegt den Pfad hier -- eine Kopie
+# im WSL-Dateisystem laedt Windows ueber \\wsl.localhost und braucht mehr als
+# das Doppelte. Die Datei zu lesen kostet nichts; cmd.exe nach %LOCALAPPDATA%
+# zu fragen wuerde den Vorteil gleich wieder auffressen.
+win32yank() {
+	f="${XDG_CACHE_HOME:-$HOME/.cache}/tmuxpp/win32yank.path"
+	if [ -r "$f" ]; then
+		p=$(cat "$f" 2>/dev/null)
+		[ -n "$p" ] && [ -x "$p" ] && { printf '%s' "$p"; return 0; }
+	fi
+	have win32yank.exe && { printf 'win32yank.exe'; return 0; }
+	return 1
+}
+
 # --- kopieren --------------------------------------------------------------
 
 copy_local() {
 	if is_wsl; then
-		if have win32yank.exe; then
-			printf '%s' "$1" | run_tool win32yank.exe -i --crlf 2>/dev/null && return 0
+		if wy=$(win32yank); then
+			printf '%s' "$1" | run_tool "$wy" -i --crlf 2>/dev/null && return 0
 		fi
 		if have clip.exe; then
 			# clip.exe erwartet UTF-16LE, sonst werden Umlaute zerlegt
@@ -97,8 +115,8 @@ read_clipboard() {
 	txt=""
 
 	if is_wsl; then
-		if have win32yank.exe; then
-			txt=$(run_tool win32yank.exe -o 2>/dev/null)
+		if wy=$(win32yank); then
+			txt=$(run_tool "$wy" -o 2>/dev/null)
 		elif have powershell.exe; then
 			# OutputEncoding explizit, sonst kommt die Konsolen-Codepage
 			txt=$(run_tool powershell.exe -NoProfile -NonInteractive -Command \

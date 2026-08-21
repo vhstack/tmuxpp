@@ -39,7 +39,7 @@ git clone --depth 1 https://github.com/vhstack/tmuxpp.git ~/.tmux
 rm -rf ~/.tmux/.git ~/.tmux/assets ~/.tmux/README*.md
 ln -s ~/.tmux/tmux.conf ~/.tmux.conf
 ```
-Keep `clipboard.sh` in place — it is required for clipboard support (see below).
+Keep `clipboard.sh` and `install_win32yank.sh` in place — both are used for clipboard support (see below).
 
 ### 4. Install TPM (Tmux Plugin Manager)
 
@@ -56,6 +56,14 @@ Start Tmux and press:
 ```tmux
 Prefix + I    # Installs the plugins
 ```
+
+### 6. WSL only: fast clipboard
+
+```sh
+sh ~/.tmux/install_win32yank.sh
+```
+
+Sets up `win32yank.exe` and makes pasting roughly four times as fast ([details](#win32yankexe-on-wsl)). Not needed on any other system.
 
 ## ⌨️ Keybindings
 
@@ -99,14 +107,36 @@ Prefix + I    # Installs the plugins
 
 | Platform | Tool | Installation |
 | --- | --- | --- |
-| WSL / Windows | `clip.exe`, `powershell.exe` (optionally `win32yank.exe`) | already present |
+| WSL / Windows | `win32yank.exe` (recommended), otherwise `clip.exe` / `powershell.exe` | `sh ~/.tmux/install_win32yank.sh` |
 | macOS | `pbcopy` / `pbpaste` | already present |
 | Linux (Wayland) | `wl-copy` / `wl-paste` | `sudo apt install wl-clipboard` |
 | Linux (X11) | `xclip` or `xsel` | `sudo apt install xclip` |
 
-Copying also sends the text to the terminal you are sitting at via OSC 52. That path needs no tool on the machine, so it works on a server without X/Wayland and across SSH — provided the terminal supports OSC 52 (Windows Terminal, WezTerm, kitty, iTerm2, Alacritty).
-Pasting cannot use it: for security reasons OSC 52 may only write, not read. Without a local tool, right-click therefore pastes tmux's own buffer — exactly what was last selected inside tmux. `Prefix + ]` does the same.
-For the terminal's native selection, e.g. across multiple panes, hold `Shift` while dragging or turn the mouse off with `Prefix + m`.
+Copying runs on two tracks: once through the local tool, once through OSC 52. The latter is an escape sequence, so the text travels in the same stream as everything else on the screen. That is how it reaches the clipboard of the machine you are really sitting at, across SSH as well, with nothing installed on the server. All it takes is a terminal that plays along: Windows Terminal, WezTerm, kitty, iTerm2 and Alacritty do.
+
+The way back is closed. A terminal that hands over its clipboard on request hands it to every program allowed to write to the screen. A `cat` on a crafted file would be enough to read along. Terminals refuse to answer for that reason, and pasting needs a tool on the machine: `win32yank.exe` or `powershell.exe` on Windows, `pbpaste` on macOS, `wl-paste` or `xclip` on Linux. With none of them around, `clipboard.sh` falls back to tmux's own buffer, that is, to whatever was selected inside tmux last.
+
+Each list is tried top to bottom. Times measured on WSL (WSL2, Ubuntu, 20 runs):
+
+| Operation | Path | Time |
+| --- | --- | --- |
+| Copy | `win32yank.exe` | 33 ms |
+| | `iconv` + `clip.exe` | 33 ms |
+| | OSC 52, always runs in addition | 5 ms |
+| Paste | `win32yank.exe` | 35 ms |
+| | `powershell.exe Get-Clipboard` | 165 ms, 340 ms on the first call |
+| | tmux buffer, when no tool is found | 3 ms |
+
+Add roughly 5 ms for the tmux call itself. Copying is therefore quick either way. Only pasting without `win32yank.exe` is expensive. For the terminal's native selection, e.g. across multiple panes, hold `Shift` while dragging or turn the mouse off with `Prefix + m`.
+
+### win32yank.exe on WSL
+The table above shows what `win32yank.exe` is good for: pasting, which drops from roughly 175 ms to 45 ms. For copying it makes no difference, because `clip.exe` lives in `system32` itself and starts just as fast. If the PowerShell path is fine for you, you can skip the rest of this section. `install_win32yank.sh` sets it up:
+```sh
+sh ~/.tmux/install_win32yank.sh           # install
+sh ~/.tmux/install_win32yank.sh --force   # download again
+sh ~/.tmux/install_win32yank.sh --remove  # remove again
+```
+The script downloads the pinned release [win32yank v0.1.1](https://github.com/equalsraf/win32yank), verifies the SHA256 of both the archive and the `.exe`, and puts the tool in `%LOCALAPPDATA%\win32yank`, that is, on the Windows filesystem. This is deliberate: with the `.exe` on the WSL filesystem, Windows loads it through `\\wsl.localhost` and needs more than twice as long. Only a symlink goes into the PATH (`~/.local/bin`); the path itself is recorded in `~/.cache/tmuxpp/win32yank.path`. Then press `Prefix + r`.
 
 ## 📦 Plugins
 

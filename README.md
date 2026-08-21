@@ -33,7 +33,7 @@ git clone --depth 1 https://github.com/vhstack/tmuxpp.git ~/.tmux
 rm -rf ~/.tmux/.git ~/.tmux/assets ~/.tmux/README*.md
 ln -s ~/.tmux/tmux.conf ~/.tmux.conf 
 ```
-`clipboard.sh` bleibt dabei liegen — die Datei wird für die Zwischenablage gebraucht (siehe unten).
+`clipboard.sh` und `install_win32yank.sh` bleiben dabei liegen — beide werden für die Zwischenablage gebraucht (siehe unten).
 
 ### 4. TPM (Tmux Plugin Manager) installieren
 ```sh
@@ -47,6 +47,12 @@ Starte Tmux und drücke:
 ```
 Prefix + I  # Installiert Plugins
 ```
+
+### 6. Nur unter WSL: schnelle Zwischenablage
+```sh
+sh ~/.tmux/install_win32yank.sh
+```
+Richtet `win32yank.exe` ein und macht das Einfügen rund viermal so flott ([Details](#win32yankexe-unter-wsl)). Auf allen anderen Systemen nicht nötig.
 
 ## ⌨️ Tastenkombinationen
 
@@ -89,14 +95,36 @@ Prefix + I  # Installiert Plugins
 
 | Plattform | Werkzeug | Installation |
 | --- | --- | --- |
-| WSL / Windows | `clip.exe`, `powershell.exe` (optional `win32yank.exe`) | bereits vorhanden |
+| WSL / Windows | `win32yank.exe` (empfohlen), sonst `clip.exe` / `powershell.exe` | `sh ~/.tmux/install_win32yank.sh` |
 | macOS | `pbcopy` / `pbpaste` | bereits vorhanden |
 | Linux (Wayland) | `wl-copy` / `wl-paste` | `sudo apt install wl-clipboard` |
 | Linux (X11) | `xclip` oder `xsel` | `sudo apt install xclip` |
 
-Beim Kopieren geht der Text zusätzlich per OSC 52 an das Terminal, an dem man sitzt. Dieser Weg braucht kein Werkzeug auf dem Rechner und funktioniert deshalb auch auf einem Server ohne X/Wayland und über SSH hinweg — vorausgesetzt, das Terminal unterstützt OSC 52 (Windows Terminal, WezTerm, kitty, iTerm2, Alacritty).
-Beim Einfügen geht das nicht: OSC 52 darf aus Sicherheitsgründen nur schreiben, nicht lesen. Ohne lokales Werkzeug fügt der Rechtsklick deshalb den tmux-eigenen Buffer ein — also genau das, was zuletzt in tmux markiert wurde. `Prefix + ]` tut dasselbe.
-Für die native Auswahl des Terminals, etwa über mehrere Panes hinweg, beim Ziehen `Shift` halten oder die Maus mit `Prefix + m` abschalten.
+Kopiert wird zweigleisig: einmal mit dem lokalen Werkzeug, einmal per OSC 52. Letzteres ist eine Escape-Sequenz, der Text reist also im selben Datenstrom wie die Bildschirmausgabe. Er landet damit in der Zwischenablage des Rechners, an dem man wirklich sitzt, auch über SSH hinweg und ohne dass auf dem Server irgendetwas installiert sein muss. Mitspielen muss nur das Terminal: Windows Terminal, WezTerm, kitty, iTerm2 und Alacritty tun das.
+
+Zurück führt dieser Weg nicht. Ein Terminal, das seine Zwischenablage auf Nachfrage preisgibt, gibt sie jedem Programm preis, das auf den Bildschirm schreiben darf. Ein `cat` auf eine präparierte Datei würde reichen, um mitzulesen, was gerade darin liegt. Die Terminals verweigern die Auskunft deshalb, und zum Einfügen braucht es ein Werkzeug auf dem Rechner: `win32yank.exe` oder `powershell.exe` unter Windows, `pbpaste` auf dem Mac, `wl-paste` oder `xclip` unter Linux. Fehlt es, fällt `clipboard.sh` auf den tmux-eigenen Buffer zurück, also auf das, was zuletzt in tmux markiert wurde.
+
+Durchprobiert wird von oben nach unten. Zeiten unter WSL gemessen (WSL2, Ubuntu, 20 Durchläufe):
+
+| Vorgang | Weg | Zeit |
+| --- | --- | --- |
+| Kopieren | `win32yank.exe` | 33 ms |
+| | `iconv` + `clip.exe` | 33 ms |
+| | OSC 52, läuft immer zusätzlich mit | 5 ms |
+| Einfügen | `win32yank.exe` | 35 ms |
+| | `powershell.exe Get-Clipboard` | 165 ms, erster Aufruf 340 ms |
+| | tmux-Buffer, wenn kein Werkzeug gefunden wird | 3 ms |
+
+Dazu kommen jeweils rund 5 ms für den tmux-Aufruf selbst. Kopieren ist damit in jedem Fall flott. Teuer ist allein das Einfügen ohne `win32yank.exe`. Für die native Auswahl des Terminals, etwa über mehrere Panes hinweg, beim Ziehen `Shift` halten oder die Maus mit `Prefix + m` abschalten.
+
+### win32yank.exe unter WSL
+Die Tabelle oben zeigt, wofür sich `win32yank.exe` lohnt: für das Einfügen, das damit von rund 175 ms auf 45 ms fällt. Beim Kopieren bringt es nichts, weil `clip.exe` selbst in `system32` liegt und genauso schnell startet. Wer mit dem PowerShell-Weg lebt, braucht das Folgende also nicht. `install_win32yank.sh` richtet es ein:
+```sh
+sh ~/.tmux/install_win32yank.sh           # installieren
+sh ~/.tmux/install_win32yank.sh --force   # neu herunterladen
+sh ~/.tmux/install_win32yank.sh --remove  # wieder entfernen
+```
+Das Skript lädt das festgelegte Release [win32yank v0.1.1](https://github.com/equalsraf/win32yank), prüft die SHA256-Summe von Archiv und `.exe` und legt das Werkzeug unter `%LOCALAPPDATA%\win32yank` ab, also im Windows-Dateisystem. Das ist Absicht: liegt die `.exe` im WSL-Dateisystem, lädt Windows sie über `\\wsl.localhost` und braucht mehr als das Doppelte. In den PATH kommt nur ein Symlink darauf (`~/.local/bin`), gefunden wird sie über `~/.cache/tmuxpp/win32yank.path`. Danach `Prefix + r`.
 
 ## 📦 Plugins
 Folgende Plugins werden über TPM verwaltet:
