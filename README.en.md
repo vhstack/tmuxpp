@@ -12,6 +12,8 @@ The example script `sample_run.sh` automatically sets up and launches a session 
 
 ![Screenshot](assets/screenshot.png)
 
+Tmuxpp is part of the [vhstack stack](https://github.com/vhstack/vhstack), where a single command installs the complete environment (prompt, Tmux, Neovim).
+
 ## 📥 Installation
 
 ### 1. Install Tmux

@@ -11,6 +11,8 @@
 
 ![Скриншот](assets/screenshot.png)
 
+Tmuxpp входит в [стек vhstack](https://github.com/vhstack/vhstack), где одна команда устанавливает полную рабочую среду (Prompt, Tmux, Neovim).
+
 ## 📥 Установка
 
 ### 1. Установите Tmux

@@ -11,6 +11,8 @@ Das Beispielskript `sample_run.sh` konfiguriert und startet automatisch eine Ses
 
 ![Screenshot](assets/screenshot.png)
 
+Tmuxpp ist Teil des [vhstack-Stacks](https://github.com/vhstack/vhstack). Dort richtet ein einziger Befehl die komplette Arbeitsumgebung ein (Prompt, Tmux, Neovim).
+
 ## 📥 Installation
 
 ### 1. Tmux installieren
