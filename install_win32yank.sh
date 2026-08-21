@@ -112,7 +112,8 @@ warn_slow_copies() {
 		[ -n "$d" ] || continue
 		case "$d" in /mnt/*) continue ;; esac
 		f="$d/win32yank.exe"
-		[ -f "$f" ] && [ ! -L "$f" ] || continue
+		[ -f "$f" ] || continue
+		[ -L "$f" ] && continue
 		case "$seen" in *" $f "*) continue ;; esac
 		seen="$seen$f "
 		say "Hinweis: $f liegt im WSL-Dateisystem und ist dadurch rund"

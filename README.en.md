@@ -6,6 +6,8 @@
 
 # Tmux Configuration
 
+[![CI](https://github.com/vhstack/tmuxpp/actions/workflows/ci.yml/badge.svg)](https://github.com/vhstack/tmuxpp/actions/workflows/ci.yml)
+
 This Tmux configuration is designed for enhanced usability, featuring intuitive keybindings, true-color support, 
 and mouse and clipboard integration — with no plugin manager involved.
 The example script `sample_run.sh` automatically sets up and launches a session with multiple windows.  

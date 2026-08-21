@@ -6,6 +6,8 @@
 
 # Tmux-Konfiguration
 
+[![CI](https://github.com/vhstack/tmuxpp/actions/workflows/ci.yml/badge.svg)](https://github.com/vhstack/tmuxpp/actions/workflows/ci.yml)
+
 Diese Tmux-Konfiguration optimiert die Bedienung durch nützliche Tastenkombinationen, True-Color-Support sowie Maus- und Zwischenablage-Unterstützung — ohne Plugin-Manager.
 Das Beispielskript `sample_run.sh` konfiguriert und startet automatisch eine Session mit mehreren Fenstern.  
 

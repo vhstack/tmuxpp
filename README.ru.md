@@ -6,6 +6,8 @@
 
 # Конфигурация Tmux
 
+[![CI](https://github.com/vhstack/tmuxpp/actions/workflows/ci.yml/badge.svg)](https://github.com/vhstack/tmuxpp/actions/workflows/ci.yml)
+
 Эта конфигурация Tmux оптимизирует работу за счёт полезных сочетаний клавиш, поддержки True Color, работы с мышью и буфером обмена — без менеджера плагинов.  
 Скрипт-пример `sample_run.sh` автоматически настраивает и запускает сессию с несколькими окнами.
 

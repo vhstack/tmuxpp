@@ -1,3 +1,4 @@
+#!/bin/sh
 # Beispiel Tmux Start Skript 
 # Eine Session 'Work' mit drei Fenstern (develop, build und run)
 # wird gestartet und verbunden.
