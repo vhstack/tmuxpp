@@ -6,6 +6,8 @@
 
 # Tmux Configuration
 
+[![Version](https://img.shields.io/github/v/tag/vhstack/tmuxpp?label=version&sort=semver&color=8aadf4)](https://github.com/vhstack/tmuxpp/tags)
+
 [![CI](https://github.com/vhstack/tmuxpp/actions/workflows/ci.yml/badge.svg)](https://github.com/vhstack/tmuxpp/actions/workflows/ci.yml)
 
 This Tmux configuration is designed for enhanced usability, featuring intuitive keybindings, true-color support, 

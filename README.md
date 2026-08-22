@@ -6,6 +6,8 @@
 
 # Tmux-Konfiguration
 
+[![Version](https://img.shields.io/github/v/tag/vhstack/tmuxpp?label=version&sort=semver&color=8aadf4)](https://github.com/vhstack/tmuxpp/tags)
+
 [![CI](https://github.com/vhstack/tmuxpp/actions/workflows/ci.yml/badge.svg)](https://github.com/vhstack/tmuxpp/actions/workflows/ci.yml)
 
 Diese Tmux-Konfiguration optimiert die Bedienung durch nützliche Tastenkombinationen, True-Color-Support sowie Maus- und Zwischenablage-Unterstützung — ohne Plugin-Manager.

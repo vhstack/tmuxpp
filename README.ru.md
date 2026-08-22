@@ -6,6 +6,8 @@
 
 # Конфигурация Tmux
 
+[![Version](https://img.shields.io/github/v/tag/vhstack/tmuxpp?label=version&sort=semver&color=8aadf4)](https://github.com/vhstack/tmuxpp/tags)
+
 [![CI](https://github.com/vhstack/tmuxpp/actions/workflows/ci.yml/badge.svg)](https://github.com/vhstack/tmuxpp/actions/workflows/ci.yml)
 
 Эта конфигурация Tmux оптимизирует работу за счёт полезных сочетаний клавиш, поддержки True Color, работы с мышью и буфером обмена — без менеджера плагинов.  
