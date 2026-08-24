@@ -14,7 +14,7 @@ This Tmux configuration is designed for enhanced usability, featuring intuitive 
 and mouse and clipboard integration — with no plugin manager involved.
 The example script `sample_run.sh` automatically sets up and launches a session with multiple windows.  
 
-![Screenshot](assets/screenshot.png)
+![tmuxpp – sessions under control: windows, panes, mouse copy/paste](assets/sessions.gif)
 
 Tmuxpp is part of the [vhstack stack](https://github.com/vhstack/vhstack), where a single command installs the complete environment (prompt, Tmux, Neovim).
 

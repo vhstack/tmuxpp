@@ -13,7 +13,7 @@
 Diese Tmux-Konfiguration optimiert die Bedienung durch nützliche Tastenkombinationen, True-Color-Support sowie Maus- und Zwischenablage-Unterstützung — ohne Plugin-Manager.
 Das Beispielskript `sample_run.sh` konfiguriert und startet automatisch eine Session mit mehreren Fenstern.  
 
-![Screenshot](assets/screenshot.png)
+![tmuxpp – Sessions im Griff: Fenster, Panes, Maus-Copy/Paste](assets/sessions.gif)
 
 Tmuxpp ist Teil des [vhstack-Stacks](https://github.com/vhstack/vhstack). Dort richtet ein einziger Befehl die komplette Arbeitsumgebung ein (Prompt, Tmux, Neovim).
 
