@@ -4,7 +4,7 @@
   <a href="README.ru.md"><img src="assets/flag-ru.png" width="16" height="12" alt="Русский" title="Переключиться на русскую версию" /></a>
 </p>
 
-# Конфигурация Tmux
+# tmuxpp — tmux, который просто работает
 
 [![Version](https://img.shields.io/github/v/tag/vhstack/tmuxpp?label=version&sort=semver&color=8aadf4)](https://github.com/vhstack/tmuxpp/tags)
 
@@ -15,7 +15,11 @@
 
 ![tmuxpp — сессии под контролем: окна, панели, copy/paste мышью](assets/sessions.gif)
 
-Tmuxpp входит в [стек vhstack](https://github.com/vhstack/vhstack), где одна команда устанавливает полную рабочую среду (Prompt, Tmux, Neovim).
+tmuxpp входит в [vhstack](https://github.com/vhstack/vhstack). Там одна команда настраивает prompt, tmux и Neovim сразу вместе:
+
+```bash
+curl -sL https://raw.githubusercontent.com/vhstack/vhstack/main/install.sh | bash
+```
 
 ## 📥 Установка
 
@@ -132,4 +136,5 @@ rm -rf ~/.tmux/plugins/tmux/.git
 ```
 
 ---
-Теперь вы можете эффективно использовать вашу Tmux-сессию! 🚀
+
+Лицензия MIT · часть [vhstack](https://github.com/vhstack/vhstack)

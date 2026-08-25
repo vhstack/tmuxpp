@@ -4,7 +4,7 @@
   <a href="README.ru.md"><img src="assets/flag-ru.png" width="16" height="12" alt="Русский" title="Переключиться на русскую версию" /></a>
 </p>
 
-# Tmux-Konfiguration
+# tmuxpp – Tmux, das einfach funktioniert
 
 [![Version](https://img.shields.io/github/v/tag/vhstack/tmuxpp?label=version&sort=semver&color=8aadf4)](https://github.com/vhstack/tmuxpp/tags)
 
@@ -15,7 +15,11 @@ Das Beispielskript `sample_run.sh` konfiguriert und startet automatisch eine Ses
 
 ![tmuxpp – Sessions im Griff: Fenster, Panes, Maus-Copy/Paste](assets/sessions.gif)
 
-Tmuxpp ist Teil des [vhstack-Stacks](https://github.com/vhstack/vhstack). Dort richtet ein einziger Befehl die komplette Arbeitsumgebung ein (Prompt, Tmux, Neovim).
+tmuxpp gehört zu [vhstack](https://github.com/vhstack/vhstack). Dort richtet ein Befehl Prompt, Tmux und Neovim zusammen ein:
+
+```bash
+curl -sL https://raw.githubusercontent.com/vhstack/vhstack/main/install.sh | bash
+```
 
 ## 📥 Installation
 
@@ -131,4 +135,5 @@ rm -rf ~/.tmux/plugins/tmux/.git
 ```
 
 ---
-Jetzt kannst du deine Tmux-Session effizienter nutzen! 🚀
+
+MIT-Lizenz · Teil von [vhstack](https://github.com/vhstack/vhstack)
