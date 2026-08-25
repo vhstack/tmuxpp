@@ -79,10 +79,32 @@ copy_local() {
 	return 1
 }
 
-# OSC 52 direkt auf das Terminal des Clients schreiben. Der Weg ueber tmux
-# selbst (set-clipboard) setzt eine Ms-Faehigkeit voraus und greift nicht in
-# jeder Version, der direkte Weg dagegen immer.
+# OSC 52 an das Terminal des Clients. Normalerweise erledigt das tmux selbst:
+# copy-pipe legt einen Buffer an, und mit 'set-clipboard on' (tmux.conf) plus
+# der Ms-Faehigkeit (terminal-features '*:clipboard', tmux >= 3.2) schickt
+# tmux die Sequenz an alle Clients -- sauber in seinen eigenen Ausgabestrom
+# eingereiht. Dann schreiben wir hier nichts: ein zweiter Prozess, der roh in
+# dasselbe TTY schreibt, in das tmux gerade zeichnet, kann dessen Ausgabe
+# zerhacken (halbe Escape-Sequenz -> Terminal "friert" kurz ein) und legt das
+# Clipboard ein zweites Mal im selben Moment an.
+#
+# Der direkte Weg bleibt als Ersatz fuer aeltere tmux-Versionen und fuer
+# 'set-clipboard off'.
+tmux_sends_osc52() {
+	case "$(tmux show -gv set-clipboard 2>/dev/null)" in
+	on | external) ;;
+	*) return 1 ;;
+	esac
+	# terminal-features gibt es ab 3.2; davor haengt Ms an der terminfo
+	v=$(tmux -V 2>/dev/null | sed 's/^tmux[^0-9]*//; s/[^0-9.].*//')
+	maj=${v%%.*}; min=${v#*.}; min=${min%%.*}
+	[ "${maj:-0}" -gt 3 ] 2>/dev/null && return 0
+	[ "${maj:-0}" -eq 3 ] 2>/dev/null && [ "${min:-0}" -ge 2 ] 2>/dev/null
+}
+
 copy_osc52() {
+	tmux_sends_osc52 && return 0
+
 	b64=$(printf '%s' "$1" | base64 2>/dev/null | tr -d '\r\n')
 	[ -n "$b64" ] || return 1
 	# Groessere Selektionen weisen die meisten Terminals ab
