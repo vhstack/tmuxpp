@@ -24,6 +24,11 @@ TIMEOUT=${TMUXPP_CLIP_TIMEOUT:-5}
 
 have() { command -v "$1" >/dev/null 2>&1; }
 
+# WSL: der Interop-Socket des tmux-Servers stirbt mit dem ersten Fenster,
+# danach startet keine .exe mehr. Den des aktuellen Clients nehmen
+# (update-environment in tmux.conf).
+eval "$(tmux show-environment -s WSL_INTEROP 2>/dev/null)"
+
 is_wsl() {
 	[ -n "${WSL_DISTRO_NAME:-}" ] && return 0
 	grep -qi microsoft /proc/version 2>/dev/null
@@ -133,17 +138,29 @@ do_copy() {
 # OSC 52 kann nur schreiben, nicht lesen (die Terminals lassen das aus
 # Sicherheitsgruenden nicht zu). Ohne lokales Werkzeug bleibt der tmux-Buffer,
 # der beim Kopieren ohnehin mitgefuellt wird.
+# Unter WSL kein Rueckfall auf den Buffer: scheitert das Werkzeug, wuerde
+# sonst still alter Text eingefuegt.
 read_clipboard() {
 	txt=""
 
 	if is_wsl; then
 		if wy=$(win32yank); then
-			txt=$(run_tool "$wy" -o 2>/dev/null)
+			txt=$(run_tool "$wy" -o 2>/dev/null) || {
+				tmux display-message 'clipboard: windows clipboard unreachable'
+				return 1
+			}
 		elif have powershell.exe; then
 			# OutputEncoding explizit, sonst kommt die Konsolen-Codepage
 			txt=$(run_tool powershell.exe -NoProfile -NonInteractive -Command \
 				'[Console]::OutputEncoding=[Text.Encoding]::UTF8; Get-Clipboard -Raw' \
-				2>/dev/null)
+				2>/dev/null) || {
+				tmux display-message 'clipboard: windows clipboard unreachable'
+				return 1
+			}
+		fi
+		if [ -n "$wy" ] || have powershell.exe; then
+			printf '%s' "$txt"
+			return 0
 		fi
 	fi
 
@@ -159,7 +176,8 @@ read_clipboard() {
 do_paste() {
 	pane="${1:?pane_id fehlt}"
 
-	txt=$(read_clipboard | tr -d '\r')
+	txt=$(read_clipboard) || return 0
+	txt=$(printf '%s' "$txt" | tr -d '\r')
 	[ -n "$txt" ] || return 0
 
 	printf '%s' "$txt" | tmux load-buffer -b tmuxpp_clip -

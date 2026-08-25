@@ -8,6 +8,15 @@ Für eine Konfigurationssammlung gilt:
 - **minor** — neue Funktionen, abwärtskompatibel
 - **patch** — Fehlerbehebungen, Feinschliff
 
+## [1.2.1] — 2026-08-25
+
+### Behoben
+
+- WSL: Rechtsklick fügte bei nicht startbarem `win32yank`/`powershell` still
+  den alten tmux-Puffer ein. Jetzt Meldung in der Statuszeile statt Einfügen.
+- WSL: `WSL_INTEROP` per `update-environment` vom Client übernehmen, der
+  Socket des Servers stirbt mit dem ersten Fenster.
+
 ## [1.2.0] — 2026-08-22
 
 Erstes getaggtes Release. Der Stand entspricht der bisherigen Entwicklung auf
