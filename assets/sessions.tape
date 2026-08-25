@@ -21,7 +21,7 @@ Type "cp ${VHS_TMUXCONF:-../tmux.conf} $FH/.tmux/tmux.conf; ln -sf .tmux/tmux.co
 Enter
 Type `echo "bind -T copy-mode-vi DoubleClick1Pane run -d 0.15 \; send -X copy-pipe-and-cancel 'sh ~/.tmux/clipboard.sh copy'" >> $FH/.tmux/tmux.conf`
 Enter
-Type "mkdir -p $FH/projekte/vlib2; rm -rf $FH/projekte/stacktop; cp -r ${VHS_APP_DIR:-$HOME/projekte/stacktop} $FH/projekte/stacktop; rm -rf $FH/projekte/stacktop/build $FH/projekte/stacktop/stacktop"
+Type "mkdir -p $FH/projekte/vlib2; rm -rf $FH/projekte/stacktop; cp -r ${VHS_APP_DIR:-$HOME/projekte/stacktop} $FH/projekte/stacktop; rm -rf $FH/projekte/stacktop/build $FH/projekte/stacktop/Debug $FH/projekte/stacktop/stacktop"
 Enter
 Type "cp -ru ${VHS_VLIB_DIR:-$HOME/projekte/vlib2}/include ${VHS_VLIB_DIR:-$HOME/projekte/vlib2}/lib $FH/projekte/vlib2/"
 Enter
