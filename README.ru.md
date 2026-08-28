@@ -4,7 +4,7 @@
   <a href="README.ru.md"><img src="assets/flag-ru.png" width="16" height="12" alt="Русский" title="Переключиться на русскую версию" /></a>
 </p>
 
-# tmuxpp — tmux, который просто работает
+# <img src="assets/vhstack.svg" width="28" height="28" alt="vhstack" style="vertical-align:middle; margin-right: 6px;" /> tmuxpp — tmux, который просто работает
 
 [![Version](https://img.shields.io/github/v/tag/vhstack/tmuxpp?label=version&sort=semver&color=8aadf4)](https://github.com/vhstack/tmuxpp/tags)
 
