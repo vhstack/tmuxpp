@@ -85,7 +85,10 @@ Sets up `win32yank.exe` and makes pasting roughly four times as fast ([details](
   - Drag → Select, and copy to the clipboard on release
   - Double-click / triple-click → Copy word / line
   - Right-click → Paste from the clipboard
+  - Right-click on a window name in the status bar → window menu (rename, swap, close)
+  - Right-click on the session name on the left → session menu (rename, renumber windows, new session or window)
   - `Prefix + m` → Toggle mouse support on/off
+  - `Prefix + <` → Window menu from the keyboard
   - `Prefix + >` or `Alt + right-click` → Pane context menu
 - **Copy Mode (vi keys):**
   - `Ctrl + PageUp` or `Prefix + [` → Enter copy mode
@@ -136,7 +139,9 @@ The script downloads the pinned release [win32yank v0.1.1](https://github.com/eq
 
 - True-color support enabled
 - Selectable themes (via `@theme` in `tmux.conf`): `vhstack`, `vhstack_lite`, `catppuccin`
+- `vhstack` and `catppuccin` require a Nerd Font (patched font) for the icons in the status bar and prompts; `vhstack_lite` is the variant without one — pure ASCII
 - `vhstack` theme enabled by default
+- Messages, copy mode and context menus follow the theme colors (menus need tmux 3.4 or newer)
 
 The configuration works without a plugin manager. Only the optional `catppuccin` theme needs a plugin — clone it once, then press `Prefix + r`:
 ```sh

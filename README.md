@@ -77,7 +77,10 @@ Richtet `win32yank.exe` ein und macht das Einfügen rund viermal so flott ([Deta
   - Ziehen → Markieren, beim Loslassen in die Zwischenablage kopieren
   - Doppelklick / Dreifachklick → Wort / Zeile kopieren
   - Rechtsklick → Aus der Zwischenablage einfügen
+  - Rechtsklick auf einen Fensternamen in der Statusleiste → Fenster-Menü (umbenennen, tauschen, schließen)
+  - Rechtsklick auf den Sessionnamen links → Session-Menü (umbenennen, Fenster neu numerieren, neue Session oder neues Fenster)
   - `Prefix + m` → Maussteuerung an/aus
+  - `Prefix + <` → Fenster-Menü über die Tastatur
   - `Prefix + >` oder `Alt + Rechtsklick` → Kontextmenü des Panes
 - **Copy-Mode (vi-Tasten):**
   - `Strg + PageUp` oder `Prefix + [` → Copy-Mode starten
@@ -126,7 +129,9 @@ Das Skript lädt das festgelegte Release [win32yank v0.1.1](https://github.com/e
 ## 🎨 Farbe & Theme
 - True Color aktiviert
 - Auswählbare Themes (über `@theme` in `tmux.conf`): `vhstack`, `vhstack_lite`, `catppuccin`
+- `vhstack` und `catppuccin` brauchen eine Nerd Font (gepatchte Schrift) für die Symbole in Statusleiste und Prompts; `vhstack_lite` ist die Variante ohne — reines ASCII
 - `vhstack`-Theme standardmäßig aktiviert
+- Meldungen, Copy-Mode und Kontextmenüs übernehmen die Farben des Themes (Menüs ab tmux 3.4)
 
 Die Konfiguration kommt ohne Plugin-Manager aus. Einzig das optionale `catppuccin`-Theme braucht ein Plugin — einmalig klonen, dann `Prefix + r`:
 ```sh
