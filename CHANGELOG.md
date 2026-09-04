@@ -8,6 +8,29 @@ Für eine Konfigurationssammlung gilt:
 - **minor** — neue Funktionen, abwärtskompatibel
 - **patch** — Fehlerbehebungen, Feinschliff
 
+## [1.3.1] — 2026-09-04
+
+### Geändert
+
+- Theme `vhstack`: Copy-Mode-Auswahl als Fläche im Petrol der Wallpaper-Kugel
+  (`term++/assets/vhstack_bg.jpg`), nur Hintergrund — Textfarben und
+  Attribute bleiben unter der Markierung erhalten (ab tmux 3.6, davor
+  Terminal-Vordergrund). Vorher Button-Farben mit `bold`, gegen den
+  Pane-Hintergrund kaum sichtbar.
+- Theme `vhstack`: Farbrollen geschärft — Peach ist Identität (Copy-Mode-Kante
+  statt Gelb), Petrol ist Pane-Welt (aktive Pane-Kante `colour66` statt Grün,
+  Marke und Uhr in Petrol statt Mauve und Grün). Grün, Blau und Mauve nur noch
+  als Informationsfarben in der Statusleiste.
+
+### Behoben
+
+- Copy-Mode-Auswahl war auf tmux-Entwicklungsständen `next-3.6` (Snapshots
+  Nov 2024 bis Jun 2025) unsichtbar: Der Fallback `#{mode-style}` der neuen
+  Optionen `copy-mode-selection-style`/`copy-mode-position-style` expandierte
+  `#{@...}`-Farbvariablen nicht (tmux-Issue 4533, im Release 3.6 behoben).
+  Alle drei Themes setzen die Optionen jetzt explizit auf `#{E:mode-style}`;
+  `set -gq` hält ältere tmux-Versionen ohne diese Optionen fehlerfrei.
+
 ## [1.3.0] — 2026-09-02
 
 ### Neu
