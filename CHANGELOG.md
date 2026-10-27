@@ -8,6 +8,13 @@ Für eine Konfigurationssammlung gilt:
 - **minor** — neue Funktionen, abwärtskompatibel
 - **patch** — Fehlerbehebungen, Feinschliff
 
+## [1.3.2] — 2026-09-04
+
+### Geändert
+
+- Erweiterte Tasten (Shift+Enter, Ctrl+Enter, ...) durchreichen
+
+
 ## [1.3.1] — 2026-09-04
 
 ### Geändert
