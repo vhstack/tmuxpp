@@ -8,6 +8,17 @@ Für eine Konfigurationssammlung gilt:
 - **minor** — neue Funktionen, abwärtskompatibel
 - **patch** — Fehlerbehebungen, Feinschliff
 
+## [1.3.3] — 2026-11-16
+
+### Behoben
+
+- Rechtsklick-Einfügen: Zwei schnelle Rechtsklicks teilten sich den Buffer
+  `tmuxpp_clip`. Der erste Aufruf löschte ihn nach dem Einfügen, der zweite
+  fand ihn nicht mehr (`no buffer tmuxpp_clip`, `returned 1`). Jeder Aufruf
+  nutzt jetzt `tmuxpp_clip_<PID>`. Schlägt das Einfügen fehl (z. B. Pane
+  geschlossen), wird der Buffer wieder entfernt.
+
+
 ## [1.3.2] — 2026-09-04
 
 ### Geändert

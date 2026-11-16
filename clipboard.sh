@@ -180,8 +180,14 @@ do_paste() {
 	txt=$(printf '%s' "$txt" | tr -d '\r')
 	[ -n "$txt" ] || return 0
 
-	printf '%s' "$txt" | tmux load-buffer -b tmuxpp_clip -
-	tmux paste-buffer -b tmuxpp_clip -t "$pane" -p -d
+	# Eigener Buffer je Aufruf: zwei schnelle Rechtsklicks loeschen sich
+	# sonst gegenseitig den Buffer weg ("no buffer", returned 1).
+	buf="tmuxpp_clip_$$"
+	printf '%s' "$txt" | tmux load-buffer -b "$buf" - || return 0
+	tmux paste-buffer -b "$buf" -t "$pane" -p -d && return 0
+	# Pane weg o.ae.: -d hat nicht geloescht, Buffer nicht liegen lassen
+	tmux delete-buffer -b "$buf" 2>/dev/null
+	return 1
 }
 
 case "${1:-}" in
